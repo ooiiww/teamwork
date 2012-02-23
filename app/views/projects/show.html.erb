@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @project.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @project.user_id %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%= @project.public %>
+</p>
+
+<p>
+  <b>Open:</b>
+  <%= @project.open %>
+</p>
+
+<p>
+  <b>Finished:</b>
+  <%= @project.finished %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

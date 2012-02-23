@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
+
+  has_many :leadings, :class_name => 'Team'
+  has_many :joinings
+  has_many :teams, :through => :joinings
 end

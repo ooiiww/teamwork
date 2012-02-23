@@ -1,5 +1,7 @@
 Teamwork::Application.routes.draw do
 
+  resources :teams
+
   root :to => "home#index"
   devise_for :users
   resources :users, :only => :show
