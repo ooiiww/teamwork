@@ -1,6 +1,11 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.1'
+
+gem 'rspec-rails', :group => [:development, :test]
+gem 'database_cleaner', :group => :test
+gem 'factory_girl_rails', :group => :test
+gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
