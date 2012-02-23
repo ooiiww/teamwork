@@ -48,9 +48,7 @@
         <div class="content">
           <div class="row">
             <div class="span9">
-			<%- flash.each do |name, msg| -%>
-			  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-			<%- end -%>
+			<%= render 'shared/alerts' %>
             <%= yield %>
             </div>
             <div class="span1">&nbsp;</div>

@@ -1,0 +1,14 @@
+<%- flash.each do |name, msg| -%>
+  <% if name.to_s == 'alert' %>
+    <% alert_type = 'alert-error' %>
+  <% elsif name.to_s == 'notice' %>
+    <% alert_type = 'alert-success' %>
+  <% else %>
+    <% alert_type = name %>
+  <% end %>
+  <div class="alert <%= alert_type %>">
+    <a class="close" data-dismiss="alert">x</a>
+    <%= msg if msg.is_a?(String) %>
+  </div>
+<%- end -%>
+
