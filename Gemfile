@@ -6,12 +6,19 @@ gem 'rspec-rails', :group => [:development, :test]
 gem 'database_cleaner', :group => :test
 gem 'factory_girl_rails', :group => :test
 gem 'devise'
+gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
 
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
