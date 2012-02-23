@@ -7,6 +7,7 @@ gem 'database_cleaner', :group => :test
 gem 'factory_girl_rails', :group => :test
 gem 'devise'
 gem 'heroku'
+gem 'twitter-bootstrap-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
