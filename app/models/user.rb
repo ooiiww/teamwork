@@ -12,4 +12,19 @@ class User < ActiveRecord::Base
   has_many :leadings, :class_name => 'Team'
   has_many :joinings
   has_many :teams, :through => :joinings
+
+  def in_the? team
+    joinings.find_by_team_id team
+  end
+
+  def join! team
+    joining = joinings.build
+	joining.team = team
+	joining.nickname = self.name
+	joining
+  end
+
+  def leave! team
+    takings.find_by_joining_id(team).destroy
+  end
 end

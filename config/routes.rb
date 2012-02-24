@@ -1,5 +1,7 @@
 Teamwork::Application.routes.draw do
 
+  resources :joinings
+
   resources :teams
 
   root :to => "home#index"

@@ -1,0 +1,5 @@
+<%= form_for current_user.joinings.find_by_team_id(@team),
+				:html => { :method => :delete },
+				:remote => true do |f| %>
+<button class="btn btn-danger">I'am fed up!</button>
+<% end %>

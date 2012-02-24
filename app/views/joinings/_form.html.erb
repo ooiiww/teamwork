@@ -1,0 +1,37 @@
+<%= form_for(@joining) do |f| %>
+  <% if @joining.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@joining.errors.count, "error") %> prohibited this joining from being saved:</h2>
+
+      <ul>
+      <% @joining.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :team_id %><br />
+    <%= f.number_field :team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :verifying %><br />
+    <%= f.check_box :verifying %>
+  </div>
+  <div class="field">
+    <%= f.label :manager %><br />
+    <%= f.check_box :manager %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

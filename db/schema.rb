@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223193320) do
+ActiveRecord::Schema.define(:version => 20120224022238) do
 
   create_table "joinings", :force => true do |t|
+    t.string   "nickname",   :default => "",    :null => false
     t.integer  "user_id",    :default => 0,     :null => false
     t.integer  "team_id",    :default => 0,     :null => false
     t.boolean  "verifying",  :default => true,  :null => false
     t.boolean  "manager",    :default => false, :null => false
-    t.string   "nickname",   :default => "",    :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
