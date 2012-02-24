@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <div id="joining_form">
+  <div id="member_form">
     <% if current_user.in_the? @team %>
       <%= render 'leave' %>
 	<% else %>

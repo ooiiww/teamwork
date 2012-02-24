@@ -1,29 +1,19 @@
 <h1>Listing teams</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>User</th>
     <th>Name</th>
-    <th>Description</th>
+    <th>Leader</th>
     <th>Private</th>
     <th>Recruiting</th>
-    <th>Dismissed</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @teams.each do |team| %>
   <tr>
-    <td><%= team.user_id %></td>
-    <td><%= team.name %></td>
-    <td><%= team.description %></td>
+    <td><%= link_to team.name, team %></td>
+    <td><%= link_to team.user.name, team.user %></td>
     <td><%= team.private %></td>
     <td><%= team.recruiting %></td>
-    <td><%= team.dismissed %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

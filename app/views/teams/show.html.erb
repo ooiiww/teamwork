@@ -1,18 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @team.user_id %>
+  <h1><%= @team.name %></h1>
 </p>
 
 <p>
-  <b>Name:</b>
-  <%= @team.name %>
+  <b>Leader:</b>
+  <%= link_to @team.user.name, @team.user %>
 </p>
 
 <p>
   <b>Description:</b>
   <%= @team.description %>
+</p>
+
+<p>
+  <b>Members:</b>
+  <%= link_to @team.members.length, team_members_path(@team) %>
 </p>
 
 <p>
@@ -23,6 +27,9 @@
 <p>
   <b>Recruiting:</b>
   <%= @team.recruiting %>
+  <% if @team.recruiting %>
+    <%= render 'member_form' %>
+  <% end %>
 </p>
 
 <p>
@@ -30,7 +37,6 @@
   <%= @team.dismissed %>
 </p>
 
-<%= render 'joining_form' %>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

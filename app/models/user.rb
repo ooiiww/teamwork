@@ -10,21 +10,21 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name, :email, :case_sensitive => false
 
   has_many :leadings, :class_name => 'Team'
-  has_many :joinings
-  has_many :teams, :through => :joinings
+  has_many :members
+  has_many :teams, :through => :members
 
   def in_the? team
-    joinings.find_by_team_id team
+    members.find_by_team_id team
   end
 
   def join! team
-    joining = joinings.build
-	joining.team = team
-	joining.nickname = self.name
-	joining
+    member = members.build
+	member.team = team
+	member.nickname = self.name
+	member
   end
 
   def leave! team
-    takings.find_by_joining_id(team).destroy
+    members.find_by_team_id(team).destroy
   end
 end

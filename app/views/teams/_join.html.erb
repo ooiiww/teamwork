@@ -1,5 +1,5 @@
-<%= form_for current_user.joinings.build(:team_id => @team.id),
+<%= form_for current_user.members.build(:team_id => @team.id),
 			:remote => true do |f| %>
 <%= f.hidden_field :team_id %>
-<button class="btn btn-success">Submit</button>
+<button class="btn btn-success">Join now!</button>
 <% end %>

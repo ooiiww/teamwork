@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
   belongs_to :user
-  has_many :joinings
-  has_many :users, :through => :joinings
+  has_many :members
+  has_many :users, :through => :members
 end

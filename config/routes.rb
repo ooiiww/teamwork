@@ -1,12 +1,13 @@
 Teamwork::Application.routes.draw do
 
-  resources :joinings
-
-  resources :teams
+  resources :members, :only => [:create, :destroy, :update]
+  resources :teams do
+	resources :members
+  end
+  resources :users, :only => :show
 
   root :to => "home#index"
   devise_for :users
-  resources :users, :only => :show
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
