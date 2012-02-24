@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :members
   has_many :teams, :through => :members
 
+  has_many :works
+
   def in_the? team
     members.find_by_team_id team
   end
@@ -27,4 +29,9 @@ class User < ActiveRecord::Base
   def leave! team
     members.find_by_team_id(team).destroy
   end
+
+  def member_in team
+    members.find_by_team_id(team)
+  end
+
 end

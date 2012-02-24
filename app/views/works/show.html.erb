@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @work.title %></h1>
+
+<hr />
+<div class="hero-unit">
+<p>
+  <b>Publisher</b>
+  <%= render :partial => 'shared/user_in_team',
+		:locals => {:user => @work.user, :team => @team} %>
+</p>
+
+<p>
+  <b>Deadline:</b>
+  <%= @work.deadline %>
+</p>
+
+<p>
+  <b>Detail:</b>
+  <%= @work.detail %>
+</p>
+
+
+<%= link_to 'Edit', edit_team_work_path(@team, @work) %> |
+<%= link_to 'Back', team_works_path(@team) %>
+
+</div>

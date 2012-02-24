@@ -1,0 +1,38 @@
+<%= form_for [@team, @work],
+			:html => { :class => "form-horizontal" } do |f| %>
+  <% if @work.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@work.errors.count, "error") %> prohibited this work from being saved:</h2>
+
+      <ul>
+      <% @work.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :team_id %>
+  <div class="control-group">
+    <%= f.label :title, :class => "control-label" %>
+	<div class="controls">
+    <%= f.text_field :title, :class => "input-xlarge" %>
+	</div>
+  </div>
+  <div class="control-group">
+    <%= f.label :detail %>
+	<div class="controls">
+    <%= f.text_area :detail, :class => "input-xlarge", :rows => 5 %>
+	</div>
+  </div>
+  <div class="control-group">
+    <%= f.label :deadline %>
+	<div class="controls">
+    <%= f.datetime_select :deadline, {}, { :class => "span1" } %>
+	</div>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Submit</button>
+	<button class="btn">Cancel</button>
+  </div>
+<% end %>

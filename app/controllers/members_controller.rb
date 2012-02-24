@@ -26,7 +26,7 @@ class MembersController < ApplicationController
   # GET /members/new.json
   def new
     @member = Member.new
-    @team = User.find params[:team_id]
+    @team = Team.find params[:team_id]
 
     respond_to do |format|
       format.html # new.html.erb

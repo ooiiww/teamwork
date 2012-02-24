@@ -1,0 +1,6 @@
+<% member = user.member_in(team) %>
+<% if member.nil? %>
+  <%= link_to "#{user.name}(not in team)", user%>
+<% else %>
+  <%= link_to member.nickname, [team, member] %>
+<% end %>

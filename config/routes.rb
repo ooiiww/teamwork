@@ -1,8 +1,10 @@
 Teamwork::Application.routes.draw do
 
+
   resources :members, :only => [:create, :destroy, :update]
   resources :teams do
 	resources :members
+    resources :works
   end
   resources :users, :only => :show
 

@@ -1,0 +1,26 @@
+<h1>Listing works</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Publisher</th>
+    <th>Deadline</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @works.each do |work| %>
+  <tr>
+    <td><%= link_to work.title, [@team, work] %></td>
+	<td><%= render :partial => 'shared/user_in_team',
+				:locals => {:user => work.user, :team => @team} %></td>
+    <td><%= work.deadline %></td>
+    <td><%= link_to 'Edit', edit_team_work_path(@team, work) %></td>
+    <td><%= link_to 'Destroy', [@team, work], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Work', new_team_work_path(@team) %>
