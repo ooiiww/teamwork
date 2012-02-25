@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :teams, :through => :members
 
   has_many :works
+  has_many :deals
 
   def in_the? team
     members.find_by_team_id team
@@ -32,6 +33,10 @@ class User < ActiveRecord::Base
 
   def member_in team
     members.find_by_team_id(team)
+  end
+
+  def dealing? work
+    deals.find_by_work_id work
   end
 
 end

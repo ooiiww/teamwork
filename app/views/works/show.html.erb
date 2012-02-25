@@ -20,8 +20,54 @@
   <%= @work.detail %>
 </p>
 
-
+<p>
 <%= link_to 'Edit', edit_team_work_path(@team, @work) %> |
 <%= link_to 'Back', team_works_path(@team) %>
+</p>
 
+<% if user_signed_in? %>
+  <% if @deal = current_user.dealing?(@work) %>
+	<div><%= link_to 'Give up', @deal, confirm: 'Are you sure?', method: :delete, :class => "btn btn-danger" %></div>
+  <% else %>
+    <%= form_for Deal.new, :html => {:class => "form-inline"} do |f| %>
+      <%= f.hidden_field :work_id, :value => @work.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :done, :value => false %>
+      <%= f.hidden_field :comment, :value => "Count me in" %>
+      <%= f.submit :value => "Count me in", :class => "btn btn-primary" %>
+    <% end %>
+  <% end %>
+<% end %>
 </div>
+
+
+<% if @deals.empty? %>
+  <p>No one is dealing with this work</p>
+<% else %>
+  <table class="table table-striped">
+    <tr>
+	  <th>Contributor</th>
+	  <th>Done</th>
+	  <th>Comment</th>
+	  <th></th>
+	  <th>Updated at</th>
+	  <th></th>
+	</tr>
+
+	<% @deals.each do |deal| %>
+	  <tr>
+	    <%= form_for deal do |f| %>
+	    <td><%= render :partial => 'shared/user_in_team',
+				:locals => {:user => deal.user, :team => @team} %></td>
+		<td><%= f.check_box :done %></td>
+		<td><%= f.text_field :comment, :class => "input-xlarge" %></td>
+        <td><%= f.submit :value => "save",
+						:class => "btn btn-primary" %></td>
+		<td><%= deal.updated_at.to_date %></td>
+		<td><%= link_to 'x', deal, confirm: 'Are you sure?', method: :delete, :class => "close" %></td>
+		<% end %>
+	  </tr>
+	<% end %>
+  </table>
+<% end %>
+

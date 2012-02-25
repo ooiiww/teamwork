@@ -16,6 +16,7 @@ class WorksController < ApplicationController
   def show
     @work = Work.find(params[:id])
 	@team = @work.team
+	@deals = @work.deals
 
     respond_to do |format|
       format.html # show.html.erb
